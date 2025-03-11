@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Login</title>
+    <style>
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fonte mais moderna */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: radial-gradient(circle, #4caf50, #d1c4e9);
+    margin: 0; /* Remova margens padrão */
+}
+
+.login-container {
+    background: white;
+    padding: 30px; /* Aumente o padding */
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); /* Sombra mais profunda */
+    width: 350px; /* Aumente a largura */
+    text-align: center;
+    transition: transform 0.3s ease-in-out; /* Transição suave */
+}
+
+.login-container:hover {
+    transform: translateY(-5px); /* Pequeno efeito de elevação */
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+input {
+    width: calc(100% - 22px); /* Ajuste para o padding */
+    padding: 11px;
+    margin: 12px 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: border-color 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: #64b5f6; /* Cor de foco */
+    box-shadow: 0 0 5px rgba(100, 181, 246, 0.5); /* Sombra de foco */
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #4caf50; /* Verde mais moderno */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra no botão */
+    position: relative; /* Para o efeito de brilho */
+    overflow: hidden; /* Para o efeito de brilho */
+}
+
+button:hover {
+    background-color: #43a047;
+    transform: translateY(-2px); /* Pequeno efeito de clique */
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
+    transition: left 0.4s ease;
+}
+
+button:hover::before {
+    left: 100%; /* Efeito de brilho */
+}
+
+#message {
+    margin-top: 15px;
+    font-weight: 500;
+}
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <input type="text" id="username" placeholder="Usuário">
+        <input type="password" id="password" placeholder="Senha">
+        <button onclick="login()">Entrar</button>
+        <p id="message" style="color: red;"></p>
+    </div>
+
+    <script>
+        function login() {
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            const message = document.getElementById("message");
+            
+            // Simulação de autenticação
+            if (username === "gab" && password === "1234") {
+                message.style.color = "green";
+                message.textContent = "Login bem-sucedido!";
+                setTimeout(() => { window.location.href = "home.html"; }, 1000);
+            } else {
+                message.textContent = "Usuário ou senha incorretos.";
+            }
+        }
+    </script>
+</body>
+</html>

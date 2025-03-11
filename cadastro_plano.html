@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Plano de Saúde</title>
+    <style>
+       body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    padding: 50px;
+    background: radial-gradient(circle, #81c784, #bbdefb); /* Gradiente ajustado */
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Sombra ajustada */
+    display: inline-block;
+    width: 90%;
+    max-width: 400px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.container:hover {
+    transform: translateY(-5px);
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+select, input {
+    display: block;
+    width: calc(100% - 22px); /* Ajuste para o padding */
+    margin: 10px 0;
+    padding: 11px;
+    border-radius: 8px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    transition: border-color 0.3s ease;
+}
+
+select:focus, input:focus {
+    outline: none;
+    border-color: #64b5f6;
+    box-shadow: 0 0 5px rgba(100, 181, 246, 0.5);
+}
+
+button {
+    display: block;
+    width: 100%;
+    margin: 20px 0 10px;
+    padding: 12px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+button:hover {
+    background-color: #43a047;
+    transform: translateY(-2px);
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
+    transition: left 0.4s ease;
+}
+
+button:hover::before {
+    left: 100%;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Escolha um Plano de Saúde</h1>
+        
+        <label for="idade">Idade:</label>
+        <input type="number" id="idade" placeholder="Digite sua idade">
+        
+        <label for="genero">Gênero:</label>
+        <select id="genero">
+            <option value="Masculino">Masculino</option>
+            <option value="Feminino">Feminino</option>
+            <option value="Outro">Outro</option>
+        </select>
+        
+        <label for="salario">Média Salarial:</label>
+        <input type="number" id="salario" placeholder="Digite sua média salarial">
+        
+        <label for="plano">Escolha um plano:</label>
+        <select id="plano">
+            <option value="Plano Básico - R$ 199,99">Hapvida - R$ 199,99</option>
+            <option value="Plano Intermediário - R$ 299,99">Sulamerica - R$ 299,99</option>
+            <option value="Plano Premium - R$ 399,99">Unimed - R$ 399,99</option>
+        </select>
+        
+        <button onclick="confirmarPlano()">Confirmar Escolha</button>
+    </div>
+
+    <script>
+        function confirmarPlano() {
+            const planoSelecionado = document.getElementById("plano").value;
+            const idade = document.getElementById("idade").value;
+            const genero = document.getElementById("genero").value;
+            const salario = document.getElementById("salario").value;
+            
+            const dadosCadastro = {
+                plano: planoSelecionado,
+                idade: idade,
+                genero: genero,
+                salario: salario
+            };
+            
+            localStorage.setItem("dadosCadastro", JSON.stringify(dadosCadastro));
+            alert("Cadastro realizado com sucesso!\nPlano: " + planoSelecionado);
+            window.location.href = "home.html";
+        }
+    </script>
+</body>
+</html>

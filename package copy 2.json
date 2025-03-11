@@ -1,0 +1,16 @@
+{
+  "name": "projeto-17",
+  "version": "1.0.0",
+  "main": "ver_cadastro.js",
+  "scripts": {
+    "dev": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "jsdom": "^26.0.0"
+  }
+}
