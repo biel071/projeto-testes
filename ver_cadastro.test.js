@@ -13,18 +13,36 @@ describe("Teste de Carregamento de Dados do Cadastro", () => {
                 </body>
             </html>
         `, { runScripts: "dangerously", resources: "usable" });
-        
+
         document = dom.window.document;
         window = dom.window;
-        
-        window.localStorage = {
-            getItem: jest.fn(() => JSON.stringify({
-                plano: "Premium",
-                idade: "25",
-                genero: "Masculino",
-                salario: "5000"
-            }))
-        };
+
+        // Mock window.localStorage
+        const localStorageMock = (function() {
+            let store = {};
+            return {
+                getItem: function(key) {
+                    return store[key] || null;
+                },
+                setItem: function(key, value) {
+                    store[key] = value.toString();
+                },
+                clear: function() {
+                    store = {};
+                }
+            };
+        })();
+        Object.defineProperty(window, 'localStorage', {
+            value: localStorageMock,
+        });
+
+        // Configuração inicial do localStorage com dados
+        window.localStorage.setItem("dadosCadastro", JSON.stringify({
+            plano: "Premium",
+            idade: "25",
+            genero: "Masculino",
+            salario: "5000"
+        }));
 
         window.onload = function() {
             const dadosSalvos = JSON.parse(window.localStorage.getItem("dadosCadastro"));

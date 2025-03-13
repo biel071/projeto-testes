@@ -3,13 +3,12 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "jest"
+    "test": "jest"
   },
-  
   "keywords": [],
-  "author": "",
+  "author": "Seu Nome",
   "license": "ISC",
-  "description": "",
+  "description": "Projeto de testes utilizando Jest e JSDOM",
   "devDependencies": {
     "jest": "^29.7.0",
     "jsdom": "^26.0.0"

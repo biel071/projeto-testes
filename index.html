@@ -100,16 +100,18 @@ button:hover::before {
     </div>
 
     <script>
-        function login() {
+               function login() {
             const username = document.getElementById("username").value;
             const password = document.getElementById("password").value;
             const message = document.getElementById("message");
-            
-            // Simulação de autenticação
+
             if (username === "gab" && password === "1234") {
                 message.style.color = "green";
                 message.textContent = "Login bem-sucedido!";
-                setTimeout(() => { window.location.href = "home.html"; }, 1000);
+
+                localStorage.setItem('isAuthenticated', 'true');
+                window.location.replace('home.html');
+
             } else {
                 message.textContent = "Usuário ou senha incorretos.";
             }
